@@ -1,0 +1,10 @@
+[package]
+name = "bytecord"
+version = "0.1.0"
+edition = "2024"
+authors = ["iizudev"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/iizudev/bytecord"
+description = "A byte reading-building utility library"
+homepage = "https://github.com/iizudev/bytecord"
+categories = ["network-programming"]
