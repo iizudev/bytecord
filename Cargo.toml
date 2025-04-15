@@ -1,6 +1,6 @@
 [package]
 name = "bytecord"
-version = "0.0.0"
+version = "0.0.1"
 edition = "2024"
 authors = ["iizudev"]
 license = "MIT OR Apache-2.0"
