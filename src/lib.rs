@@ -78,11 +78,13 @@ pub struct ByteCord<T> {
 
 impl<T> ByteCord<T> {
     /// Returns a new [`ByteCord`] wrapping the provided data.
+    #[inline]
     pub fn new(data: T) -> Self {
         ByteCord { data }
     }
 
     /// Returns a new reader with default alignment (1 byte).
+    #[inline]
     pub fn read(&self) -> ByteCordReader<T> {
         ByteCordReader::new(self)
     }
@@ -92,6 +94,7 @@ impl<T> ByteCord<T> {
     /// # Panics
     ///
     /// Panics if the alignment is not a power of 2 or equal to 0.
+    #[inline]
     pub fn read_with_alignment(&self, alignment: usize) -> ByteCordReader<T> {
         ByteCordReader::with_alignment(self, alignment)
     }
@@ -100,6 +103,7 @@ impl<T> ByteCord<T> {
 impl<T: AsRef<[u8]>> ByteCord<T> {
     /// Returns a byte slice starting at position with given length
     /// or None if out of bounds.
+    #[inline]
     pub fn at_n(&self, position: usize, length: usize) -> Option<&[u8]> {
         let data = self.data.as_ref();
         if position + length > data.len() {
@@ -116,17 +120,20 @@ impl<T: AsRef<[u8]>> ByteCord<T> {
     ///
     /// The unsafe block is safe because bounds are checked and the
     /// conversion preserves the original slice's lifetime.
+    #[inline]
     pub fn at<const S: usize>(&self, position: usize) -> Option<&[u8; S]> {
         self.at_n(position, S)
             .map(|slice| unsafe { &*(slice.as_ptr() as *const [u8; S]) })
     }
 
     /// Returns length of this cord.
+    #[inline]
     pub fn len(&self) -> usize {
         self.data.as_ref().len()
     }
 
     /// Returns `true` if the underlying data is empty.
+    #[inline]
     pub fn is_empty(&self) -> bool {
         self.data.as_ref().is_empty()
     }
@@ -135,6 +142,7 @@ impl<T: AsRef<[u8]>> ByteCord<T> {
 impl<T: AsMut<[u8]>> ByteCord<T> {
     /// Returns a mutable byte slice starting at position with given length
     /// or None if out of bounds.
+    #[inline]
     pub fn at_n_mut(&mut self, position: usize, length: usize) -> Option<&mut [u8]> {
         let data = self.data.as_mut();
         if position + length >= data.len() {
@@ -151,6 +159,7 @@ impl<T: AsMut<[u8]>> ByteCord<T> {
     ///
     /// The unsafe block is safe because bounds are checked and the
     /// conversion preserves the original slice's lifetime.
+    #[inline]
     pub fn at_mut<const S: usize>(&mut self, position: usize) -> Option<&mut [u8; S]> {
         self.at_n_mut(position, S)
             .map(|slice| unsafe { &mut *(slice.as_mut_ptr() as *mut [u8; S]) })
