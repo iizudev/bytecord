@@ -19,7 +19,7 @@ cargo add bytecord
 reading:
 
 ```rust
-use bytecord::{ByteCord, ByteCordReader};
+use bytecord::ByteCord;
 
 let data = vec![0u8; 1024];
 let cord = ByteCord::new(data);
