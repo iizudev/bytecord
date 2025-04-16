@@ -55,7 +55,6 @@ impl<'a, T> ByteCordReader<'a, T> {
 impl<'a, T: AsRef<[u8]>> ByteCordReader<'a, T> {
     /// Returns `length` bytes at its currect position and advances the
     /// position to next aligned offset, or None if out of bounds.
-    #[inline]
     pub fn next_n(&mut self, length: usize) -> Option<&'a [u8]> {
         if let Some(result) = self.cord.at_n(self.position, length) {
             self.position = (self.position + length).next_multiple_of(self.alignment);
