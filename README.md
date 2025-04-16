@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="bytecord icon" src="bytecord.jpg" width="240" />
+  <img alt="bytecord icon" src="bytecord.png" width="240" />
 </p>
 <p align="center">
   A lightweight utility library for reading and building binary data with alignment.
