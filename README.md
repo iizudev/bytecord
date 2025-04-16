@@ -9,6 +9,7 @@
 ## Usage
 
 Add this library to your project by:
+
 ```bash
 cargo add bytecord
 ```
@@ -16,6 +17,7 @@ cargo add bytecord
 ### Example
 
 reading:
+
 ```rust
 use bytecord::{ByteCord, ByteCordReader};
 
@@ -29,6 +31,7 @@ let b = cord.next_n(a).unwrap();
 ```
 
 building:
+
 ```rust
 use bytecord::ByteCordBuilder;
 
